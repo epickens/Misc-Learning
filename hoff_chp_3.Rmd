@@ -1,0 +1,10 @@
+---
+title: "Hoff_Chp_3"
+author: "Elliot Pickens"
+date: '2022-09-28'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
