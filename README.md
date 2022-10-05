@@ -1,4 +1,4 @@
-# Learn-Cpp-with-me
-Let's learn some C++
+# Learn Stats
+Let's learn statistics!
 
-I'm going to use this repo to upload little projects I'm working through on my way to learning C++
+I'm going to use this repo to upload little projects and learning materials that I can reference in my blog
