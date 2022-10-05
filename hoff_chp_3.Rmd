@@ -8,3 +8,40 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
+
+```{r}
+theta = seq(0.1,0.9,0.1)
+n = c(1,2,8,16,32)
+
+comb = expand.grid(theta, n)
+comb$a = comb$Var1 * comb$Var2
+comb$b = comb$Var2 - comb$a
+
+y=57
+n=100-y
+
+comb$p = 1-pbeta(0.5, comb$a+y, comb$b+n)
+```
+
+```{r}
+gamma_a = c(120, 10)
+gamma_b = c(12, 1)
+
+a = c(12,9,12,14,13,13,15,8,15,6)
+b = c(11,11,10,9,9,8,7,10,6,8,8,9,7)
+
+ci_a = qgamma(c(0.025, 0.975), gamma_a[1]+sum(a), gamma_a[2]+length(a))
+ci_b = qgamma(c(0.025, 0.975), gamma_b[1]+sum(b), gamma_b[2]+length(b))
+
+n = seq(1,50,1)
+
+for (prior in n) {
+  print(prior)
+  print(qgamma(c(0.025, 0.975), 12*prior+sum(b), prior+length(b)))
+}
+```
+
+ 
+ 
