@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
+These are just some sketch notes, not real answers.
 
 ```{r}
 theta = seq(0.1,0.9,0.1)
@@ -23,6 +23,24 @@ y=57
 n=100-y
 
 comb$p = 1-pbeta(0.5, comb$a+y, comb$b+n)
+
+# Can you use rbeta for this (in combo with mutate)?
+
+temp = function(df) {
+  t = rep(0, nrow(df))
+  for (i in 1:nrow(df)) {
+    t[i] = sum(rbeta(100, df$a[i] + y, df$b[i] + n) > 0.5) / 100
+    #t[i] = mean(rbeta(100, df$a[i] + y, df$b[i] + n))
+  }
+  t
+}
+
+comb = comb %>% 
+  mutate(test = temp(comb))
+
+comb$test = mean(rbeta(100, comb$a+y, comb$b+n))
+
+
 ```
 
 ```{r}
